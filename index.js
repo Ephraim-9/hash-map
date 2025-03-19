@@ -52,6 +52,18 @@ class HashTable {
       return;
     }
 
+    has(key) {
+      const index = this.hash(key)
+      const bucket = this.buckets[index]
+
+      for (const pair of bucket) {
+        if (pair[0] === key) {
+          return true;
+        }
+      }
+      return false;
+    }
+
   }   
 
 const test = new HashTable(10)
@@ -68,4 +80,4 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
-console.log(test.get('kite'))
+console.log(test.has('hat'))
