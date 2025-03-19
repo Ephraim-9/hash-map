@@ -1,8 +1,8 @@
 class HashTable {
     constructor(capacity){
-        this.buckets = Array.from({length: capacity}, () => []);
-        this.capacity = capacity || 16;
-        this.size = 0;
+      this.capacity = capacity || 16;
+      this.buckets = Array.from({length: capacity}, () => []);
+      this.size = 0;
     }
 
     hash(key) {
@@ -36,15 +36,36 @@ class HashTable {
       // Step 5: If the key doesn’t exist, add it to the bucket
       bucket.push([key, value])
 
-      console.log(this.buckets[index])
       // Step 6: Update the size if needed
       this.size++;
-  }
+    }
+
+    get(value) {
+      const index = this.hash(value)
+      const bucket = this.buckets[index]
+
+      for (const pair of bucket) {
+        if (pair[0] === value) {
+          return pair[1]
+        }
+      }
+      return;
+    }
+
   }   
 
-const myHashTable = new HashTable (10);
-myHashTable.set("something", "great")
-/* console.log(myHashTable.hash("avacado"))
-console.log(myHashTable.hash("kiwi"))
-console.log(myHashTable.hash("bannana"))
-console.log(myHashTable.hash("apple")) */
+const test = new HashTable(10)
+test.set('apple', 'red')
+test.set('banana', 'yellow')
+test.set('carrot', 'orange')
+test.set('dog', 'brown')
+test.set('elephant', 'gray')
+test.set('frog', 'green')
+test.set('grape', 'purple')
+test.set('hat', 'black')
+test.set('ice cream', 'white')
+test.set('jacket', 'blue')
+test.set('kite', 'pink')
+test.set('lion', 'golden')
+
+console.log(test.get('kite'))
