@@ -94,6 +94,16 @@ class HashTable {
       }
       return valuesArr;
     }
+
+    entries() {
+      const entriesArr = []
+      for (const bucket of this.buckets) {
+        for (const pair of bucket) {
+          entriesArr.push(pair)
+        }
+      }
+      return entriesArr;
+    }
   }   
 
 const test = new HashTable(10)
@@ -110,4 +120,4 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
-console.table(test.values())
+console.table(test.entries())
