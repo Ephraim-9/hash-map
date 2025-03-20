@@ -79,6 +79,11 @@ class HashTable {
     length(){
       return this.size;
     }
+
+    clear(){
+      this.buckets = Array.from({length: this.capacity}, () => []);
+      this.size = 0;
+    }
   }   
 
 const test = new HashTable(10)
@@ -95,6 +100,6 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
-console.log(test.length())
+test.clear()
 
 console.table(test.buckets)
