@@ -64,6 +64,17 @@ class HashTable {
       return false;
     }
 
+    remove(key) {
+      const indexBucket = this.hash(key)
+      const bucket = this.buckets[indexBucket]
+
+      const index = bucket.findIndex(pair => pair[0] === key);
+      if (index !== -1) {
+        bucket.splice(index, 1)
+        return true;
+      }
+      else{return false;}
+    }
   }   
 
 const test = new HashTable(10)
@@ -80,4 +91,8 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
-console.log(test.has('hat'))
+test.remove('frog')
+test.remove('dog')
+console.log(test.remove('lion'))
+
+console.table(test.buckets)
