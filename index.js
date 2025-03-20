@@ -76,13 +76,23 @@ class HashTable {
       else{return false;}
     }
 
-    length(){
+    length() {
       return this.size;
     }
 
-    clear(){
+    clear() {
       this.buckets = Array.from({length: this.capacity}, () => []);
       this.size = 0;
+    }
+
+    values() {
+      const valuesArr = []
+      for (const bucket of this.buckets) {
+        for (const pair of bucket) {
+          valuesArr.push(pair[1]);
+        }
+      }
+      return valuesArr;
     }
   }   
 
@@ -100,6 +110,4 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
-test.clear()
-
-console.table(test.buckets)
+console.table(test.values())
