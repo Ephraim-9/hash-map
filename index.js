@@ -75,6 +75,10 @@ class HashTable {
       }
       else{return false;}
     }
+
+    length(){
+      return this.size;
+    }
   }   
 
 const test = new HashTable(10)
@@ -91,8 +95,6 @@ test.set('jacket', 'blue')
 test.set('kite', 'pink')
 test.set('lion', 'golden')
 
-test.remove('frog')
-test.remove('dog')
-console.log(test.remove('lion'))
+console.log(test.length())
 
 console.table(test.buckets)
